@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domain\Product\Http\Resources\Product;
-
+use App\Domain\User\Http\Resources\User\UserResource;
 use Illuminate\Http\Request;
 use App\Infrastructure\Http\AbstractResources\BaseResource as JsonResource;
 
@@ -16,8 +16,10 @@ class ProductResource extends JsonResource
     public function data(Request $request):array
     {
         return [
-            'id'               => $this->id,
-            'name'             => $this->name,
+            'id'               => $this->when($this->id, $this->id),
+            'name'             => $this->when($this->name, $this->name),
+            'desc'             => $this->when($this->desc, $this->desc),
+            'owner'             => UserResource::make($this->whenLoaded('owner')),
         ];
     }
 }

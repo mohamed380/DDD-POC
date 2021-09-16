@@ -2,7 +2,7 @@
 
 namespace App\Domain\User\Entities;
 
-//use Laravel\Passport\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens;
 //use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Domain\User\Entities\Traits\Relations\UserRelations;
@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    use Notifiable, UserRelations, UserAttributes, HasFactory;
+    use Notifiable, UserRelations, UserAttributes, HasFactory, HasApiTokens;
 
     /**
      * @var array

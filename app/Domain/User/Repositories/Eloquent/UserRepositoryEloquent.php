@@ -20,8 +20,12 @@ class UserRepositoryEloquent extends EloquentRepository implements UserRepositor
      * @return string
      */
     protected $allowedFields = [
-        ###allowedFields###
-    	###\allowedFields###
+        'id',
+        'name',
+        'products.id',
+        'products.name',
+        'products.desc',
+        'products.user_id',
     ];
 
     /**
@@ -30,8 +34,7 @@ class UserRepositoryEloquent extends EloquentRepository implements UserRepositor
      * @return string
      */
     protected $allowedIncludes = [
-        ###allowedIncludes###
-    	###\allowedIncludes###
+       'products',
     ];
 
     /**
@@ -52,8 +55,7 @@ class UserRepositoryEloquent extends EloquentRepository implements UserRepositor
     public function relations()
     {
         return [
-            ###allowedRelations###
-            ###\allowedRelations###
+           'products'
         ];
     }
 }

@@ -28,7 +28,7 @@ class Product extends Model
      *
      * @var array
      */
-    private $belongsTo = [];
+    private $belongsTo = ['owner'];
 
     /**
      * define hasMany relations.
@@ -50,7 +50,9 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name',
+        'desc',
+        'user_id'
     ];
 
     /**

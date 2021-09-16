@@ -3,6 +3,7 @@
 namespace App\Domain\Product\Http\Resources\Product;
 
 use App\Infrastructure\Http\AbstractResources\BaseCollection as ResourceCollection;
+use Illuminate\Http\Request;
 
 class ProductResourceCollection extends ResourceCollection
 {

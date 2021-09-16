@@ -3,6 +3,7 @@
 namespace App\Domain\User\Http\Resources\User;
 
 use App\Infrastructure\Http\AbstractResources\BaseCollection as ResourceCollection;
+use Illuminate\Http\Request;
 
 class UserResourceCollection extends ResourceCollection
 {

@@ -58,8 +58,9 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $index = $this->productRepository->spatie()->all();
-
+        
+        $index = $this->productRepository->spatie()->get();
+        
         $this->setData('title', __('main.show-all') . ' ' . __('main.product'));
 
         $this->setData('alias', $this->domainAlias);
@@ -99,7 +100,7 @@ class ProductController extends Controller
      */
     public function store(ProductStoreFormRequest $request)
     {
-        $store = $this->productRepository->create($request->validated());
+        $store = $this->productRepository->create(array_merge($request->validated(),['user_id' => auth()->id()]));
 
         if($store){
             $this->setData('data', $store);

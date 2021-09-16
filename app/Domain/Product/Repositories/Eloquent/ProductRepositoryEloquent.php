@@ -20,9 +20,22 @@ class ProductRepositoryEloquent extends EloquentRepository implements ProductRep
      * @return string
      */
     protected $allowedFields = [
-        ###allowedFields###
-    	###\allowedFields###
+       'name',
+       'desc',
+       'user_id',
+       'owner.id',
+       'owner.name',
     ];
+
+    /**
+     * Specify Fields
+     *
+     * @return string
+     */
+    protected $allowedFilters = [
+        'name',
+        'desc',
+     ];
 
     /**
      * Include Relationships
@@ -30,8 +43,7 @@ class ProductRepositoryEloquent extends EloquentRepository implements ProductRep
      * @return string
      */
     protected $allowedIncludes = [
-        ###allowedIncludes###
-    	###\allowedIncludes###
+        'owner'
     ];
 
     /**
@@ -52,8 +64,7 @@ class ProductRepositoryEloquent extends EloquentRepository implements ProductRep
     public function relations()
     {
         return [
-            ###allowedRelations###
-            ###\allowedRelations###
+            'owner'
         ];
     }
 }

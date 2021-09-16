@@ -10,9 +10,13 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\MorphedByMany;
-
+use App\Domain\Product\Entities\Product;
 trait UserRelations
 {
-    ###allowedRelations###
-    ###\allowedRelations###
+    
+    public function products() : HasMany
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

@@ -57,6 +57,7 @@ abstract class EloquentRepository extends BaseRepository
         foreach ($this->allowedFiltersExact as $field) {
             array_push($this->allowedFilters, AllowedFilter::exact($field));
         }
+        
         if ($this->model instanceof Builder) {
             $this->model = QueryBuilder::for($this->model)->allowedFields($this->allowedFields)->allowedFilters($this->allowedFilters)->allowedIncludes($this->allowedIncludes);
         } else {

@@ -2,6 +2,7 @@
 
 namespace App\Domain\User\Http\Resources\User;
 
+use App\Domain\Product\Http\Resources\Product\ProductResourceCollection;
 use Illuminate\Http\Request;
 use App\Infrastructure\Http\AbstractResources\BaseResource as JsonResource;
 
@@ -16,8 +17,10 @@ class UserResource extends JsonResource
     public function data(Request $request):array
     {
         return [
-            'id'               => $this->id,
-            'name'             => $this->name,
+            'id'               => $this->when($this->id, $this->id),
+            'name'             => $this->when($this->name, $this->name),
+            'prodcuts'         => new ProductResourceCollection($this->whenLoaded('products')),
         ];
     }
 }
+
